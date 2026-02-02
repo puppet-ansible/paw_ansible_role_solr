@@ -1,23 +1,21 @@
 ---
-paw_ansible_role_solr::solr_service_name: solr
-paw_ansible_role_solr::solr_install_path: "/opt/{{ solr_service_name }}"
-paw_ansible_role_solr::solr_home: "/var/{{ solr_service_name }}"
-paw_ansible_role_solr::solr_host: 0.0.0.0
-paw_ansible_role_solr::solr_port: '8983'
-paw_ansible_role_solr::solr_xms: 256M
-paw_ansible_role_solr::solr_xmx: 512M
-paw_ansible_role_solr::solr_log_file_path: "/var/log/solr.log"
-paw_ansible_role_solr::solr_user: solr
 paw_ansible_role_solr::solr_workspace: "/root"
 paw_ansible_role_solr::solr_create_user: true
+paw_ansible_role_solr::solr_user: solr
 paw_ansible_role_solr::solr_group: "{{ solr_user }}"
 paw_ansible_role_solr::solr_version: 8.11.2
 paw_ansible_role_solr::solr_mirror: https://archive.apache.org/dist
 paw_ansible_role_solr::solr_remove_cruft: false
 paw_ansible_role_solr::solr_service_manage: true
+paw_ansible_role_solr::solr_service_name: solr
 paw_ansible_role_solr::solr_service_state: started
 paw_ansible_role_solr::solr_install_dir: "/opt"
+paw_ansible_role_solr::solr_install_path: "/opt/{{ solr_service_name }}"
+paw_ansible_role_solr::solr_home: "/var/{{ solr_service_name }}"
 paw_ansible_role_solr::solr_connect_host: localhost
+paw_ansible_role_solr::solr_port: '8983'
+paw_ansible_role_solr::solr_xms: 256M
+paw_ansible_role_solr::solr_xmx: 512M
 paw_ansible_role_solr::solr_timezone: UTC
 paw_ansible_role_solr::solr_opts: "$SOLR_OPTS -Dlog4j2.formatMsgNoLookups=true"
 paw_ansible_role_solr::solr_cores:

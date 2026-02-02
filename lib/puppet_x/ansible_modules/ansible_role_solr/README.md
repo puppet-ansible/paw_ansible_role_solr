@@ -8,7 +8,7 @@ Installs [Apache Solr](http://lucene.apache.org/solr/) on Linux servers.
 
 Java must be available on the server. You can easily install Java using the `geerlingguy.java` role. Make sure the Java version installed meets the minimum requirements of Solr (e.g. Java 8 for Solr 6+).
 
-This role is currently tested and working with Solr 3.x, 4.x, 5.x, 6.x, 7.x, and 8.x.
+This role is currently tested and working with Solr 7.x and 8.x.
 
 ## Role Variables
 
@@ -45,7 +45,7 @@ By default, this role will manage the `solr` service, ensuring it is enabled at 
     solr_install_dir: /opt
     solr_install_path: /opt/solr
 
-The path where Apache Solr will be installed. For Solr 5+, the `solr_install_dir` will be used by Solr's installation script. For Solr < 5, the Solr installation files will be copied in place in the `solr_install_path`.
+The path where Apache Solr will be installed. The `solr_install_dir` will be used by Solr's installation script.
 
     solr_home: /var/solr
 
@@ -71,7 +71,7 @@ Solr options. This option was added to the role in part to mitigate [CVE-2021-44
     solr_cores:
       - collection1
 
-A list of cores / collections which should exist on the server. Each one will be created (if it doesn't exist already) using the default example configuration that ships with Solr. Note that this variable only applies when using Solr 5+.
+A list of cores / collections which should exist on the server. Each one will be created (if it doesn't exist already) using the default example configuration that ships with Solr.
 
     solr_connect_host: localhost
 
@@ -80,18 +80,6 @@ The hostname or IP address on which Solr will be reachable. `localhost` should w
     solr_restart_handler_enabled: true
 
 Whether the `restart solr` handler should be used or not. If you're building containers or AMIs, you might need to disable the restart handler for a provisioning run.
-
-### Variables used only for Solr < 5.
-
-The following variables are currently only applied to installations of Solr 4 and below:
-
-    solr_log_file_path: /var/log/solr.log
-
-Path where Solr log file will be created.
-
-    solr_host: "0.0.0.0"
-
-The hostname or IP address to which Solr will bind. Defaults to `0.0.0.0` which allows Solr to listen on all interfaces.
 
 ## Dependencies
 

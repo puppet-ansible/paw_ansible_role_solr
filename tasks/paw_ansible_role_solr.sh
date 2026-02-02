@@ -43,78 +43,6 @@ fi
 # Build extra-vars from PT_* environment variables (excluding par_* control params)
 EXTRA_VARS="{"
 FIRST=true
-if [ -n "$PT_solr_service_name" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_service_name\": \"$PT_solr_service_name\""
-fi
-if [ -n "$PT_solr_install_path" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_install_path\": \"$PT_solr_install_path\""
-fi
-if [ -n "$PT_solr_home" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_home\": \"$PT_solr_home\""
-fi
-if [ -n "$PT_solr_host" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_host\": \"$PT_solr_host\""
-fi
-if [ -n "$PT_solr_port" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_port\": \"$PT_solr_port\""
-fi
-if [ -n "$PT_solr_xms" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_xms\": \"$PT_solr_xms\""
-fi
-if [ -n "$PT_solr_xmx" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_xmx\": \"$PT_solr_xmx\""
-fi
-if [ -n "$PT_solr_log_file_path" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_log_file_path\": \"$PT_solr_log_file_path\""
-fi
-if [ -n "$PT_solr_user" ]; then
-  if [ "$FIRST" = true ]; then
-    FIRST=false
-  else
-    EXTRA_VARS="$EXTRA_VARS,"
-  fi
-  EXTRA_VARS="$EXTRA_VARS\"solr_user\": \"$PT_solr_user\""
-fi
 if [ -n "$PT_solr_workspace" ]; then
   if [ "$FIRST" = true ]; then
     FIRST=false
@@ -130,6 +58,14 @@ if [ -n "$PT_solr_create_user" ]; then
     EXTRA_VARS="$EXTRA_VARS,"
   fi
   EXTRA_VARS="$EXTRA_VARS\"solr_create_user\": \"$PT_solr_create_user\""
+fi
+if [ -n "$PT_solr_user" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_user\": \"$PT_solr_user\""
 fi
 if [ -n "$PT_solr_group" ]; then
   if [ "$FIRST" = true ]; then
@@ -171,6 +107,14 @@ if [ -n "$PT_solr_service_manage" ]; then
   fi
   EXTRA_VARS="$EXTRA_VARS\"solr_service_manage\": \"$PT_solr_service_manage\""
 fi
+if [ -n "$PT_solr_service_name" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_service_name\": \"$PT_solr_service_name\""
+fi
 if [ -n "$PT_solr_service_state" ]; then
   if [ "$FIRST" = true ]; then
     FIRST=false
@@ -187,6 +131,22 @@ if [ -n "$PT_solr_install_dir" ]; then
   fi
   EXTRA_VARS="$EXTRA_VARS\"solr_install_dir\": \"$PT_solr_install_dir\""
 fi
+if [ -n "$PT_solr_install_path" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_install_path\": \"$PT_solr_install_path\""
+fi
+if [ -n "$PT_solr_home" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_home\": \"$PT_solr_home\""
+fi
 if [ -n "$PT_solr_connect_host" ]; then
   if [ "$FIRST" = true ]; then
     FIRST=false
@@ -194,6 +154,30 @@ if [ -n "$PT_solr_connect_host" ]; then
     EXTRA_VARS="$EXTRA_VARS,"
   fi
   EXTRA_VARS="$EXTRA_VARS\"solr_connect_host\": \"$PT_solr_connect_host\""
+fi
+if [ -n "$PT_solr_port" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_port\": \"$PT_solr_port\""
+fi
+if [ -n "$PT_solr_xms" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_xms\": \"$PT_solr_xms\""
+fi
+if [ -n "$PT_solr_xmx" ]; then
+  if [ "$FIRST" = true ]; then
+    FIRST=false
+  else
+    EXTRA_VARS="$EXTRA_VARS,"
+  fi
+  EXTRA_VARS="$EXTRA_VARS\"solr_xmx\": \"$PT_solr_xmx\""
 fi
 if [ -n "$PT_solr_timezone" ]; then
   if [ "$FIRST" = true ]; then

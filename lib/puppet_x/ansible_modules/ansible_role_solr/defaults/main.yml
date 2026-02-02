@@ -33,9 +33,4 @@ solr_default_core_path: "{% if solr_version.split('.')[0] < '9' %}{{ solr_instal
 
 solr_config_file: /etc/default/{{ solr_service_name }}.in.sh
 
-# Enable restart solr handler
 solr_restart_handler_enabled: true
-
-# Used only for Solr < 5.
-solr_log_file_path: /var/log/solr.log
-solr_host: "0.0.0.0"

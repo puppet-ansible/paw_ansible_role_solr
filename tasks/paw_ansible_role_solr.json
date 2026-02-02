@@ -4,42 +4,6 @@
   "description": "Execute the entire Ansible role imperatively",
   "input_method": "environment",
   "parameters": {
-    "solr_service_name": {
-      "description": "Ansible role variable (default: solr)",
-      "type": "Optional[String]"
-    },
-    "solr_install_path": {
-      "description": "Ansible role variable (default: /opt/{{ solr_service_name }})",
-      "type": "Optional[String]"
-    },
-    "solr_home": {
-      "description": "Ansible role variable (default: /var/{{ solr_service_name }})",
-      "type": "Optional[String]"
-    },
-    "solr_host": {
-      "description": "Ansible role variable (default: 0.0.0.0)",
-      "type": "Optional[String]"
-    },
-    "solr_port": {
-      "description": "Ansible role variable (default: 8983)",
-      "type": "Optional[String]"
-    },
-    "solr_xms": {
-      "description": "Ansible role variable (default: 256M)",
-      "type": "Optional[String]"
-    },
-    "solr_xmx": {
-      "description": "Ansible role variable (default: 512M)",
-      "type": "Optional[String]"
-    },
-    "solr_log_file_path": {
-      "description": "Used only for Solr < 5.",
-      "type": "Optional[String]"
-    },
-    "solr_user": {
-      "description": "Ansible role variable (default: solr)",
-      "type": "Optional[String]"
-    },
     "solr_workspace": {
       "description": "Ansible role variable (default: /root)",
       "type": "Optional[String]"
@@ -47,6 +11,10 @@
     "solr_create_user": {
       "description": "Ansible role variable (default: true)",
       "type": "Optional[Boolean]"
+    },
+    "solr_user": {
+      "description": "Ansible role variable (default: solr)",
+      "type": "Optional[String]"
     },
     "solr_group": {
       "description": "Ansible role variable (default: {{ solr_user }})",
@@ -68,6 +36,10 @@
       "description": "Ansible role variable (default: true)",
       "type": "Optional[Boolean]"
     },
+    "solr_service_name": {
+      "description": "Ansible role variable (default: solr)",
+      "type": "Optional[String]"
+    },
     "solr_service_state": {
       "description": "Ansible role variable (default: started)",
       "type": "Optional[String]"
@@ -76,8 +48,28 @@
       "description": "Ansible role variable (default: /opt)",
       "type": "Optional[String]"
     },
+    "solr_install_path": {
+      "description": "Ansible role variable (default: /opt/{{ solr_service_name }})",
+      "type": "Optional[String]"
+    },
+    "solr_home": {
+      "description": "Ansible role variable (default: /var/{{ solr_service_name }})",
+      "type": "Optional[String]"
+    },
     "solr_connect_host": {
       "description": "Ansible role variable (default: localhost)",
+      "type": "Optional[String]"
+    },
+    "solr_port": {
+      "description": "Ansible role variable (default: 8983)",
+      "type": "Optional[String]"
+    },
+    "solr_xms": {
+      "description": "Ansible role variable (default: 256M)",
+      "type": "Optional[String]"
+    },
+    "solr_xmx": {
+      "description": "Ansible role variable (default: 512M)",
       "type": "Optional[String]"
     },
     "solr_timezone": {
@@ -101,7 +93,7 @@
       "type": "Optional[String]"
     },
     "solr_restart_handler_enabled": {
-      "description": "Enable restart solr handler",
+      "description": "Ansible role variable (default: true)",
       "type": "Optional[Boolean]"
     },
     "par_tags": {

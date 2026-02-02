@@ -63,38 +63,14 @@ if ((Test-Path (Join-Path $AnsibleDir "roles")) -and (Test-Path $CollectionPlayb
 
 # Build extra-vars from PT_* environment variables
 $ExtraVars = @{}
-if ($env:PT_solr_service_name) {
-  $ExtraVars['solr_service_name'] = $env:PT_solr_service_name
-}
-if ($env:PT_solr_install_path) {
-  $ExtraVars['solr_install_path'] = $env:PT_solr_install_path
-}
-if ($env:PT_solr_home) {
-  $ExtraVars['solr_home'] = $env:PT_solr_home
-}
-if ($env:PT_solr_host) {
-  $ExtraVars['solr_host'] = $env:PT_solr_host
-}
-if ($env:PT_solr_port) {
-  $ExtraVars['solr_port'] = $env:PT_solr_port
-}
-if ($env:PT_solr_xms) {
-  $ExtraVars['solr_xms'] = $env:PT_solr_xms
-}
-if ($env:PT_solr_xmx) {
-  $ExtraVars['solr_xmx'] = $env:PT_solr_xmx
-}
-if ($env:PT_solr_log_file_path) {
-  $ExtraVars['solr_log_file_path'] = $env:PT_solr_log_file_path
-}
-if ($env:PT_solr_user) {
-  $ExtraVars['solr_user'] = $env:PT_solr_user
-}
 if ($env:PT_solr_workspace) {
   $ExtraVars['solr_workspace'] = $env:PT_solr_workspace
 }
 if ($env:PT_solr_create_user) {
   $ExtraVars['solr_create_user'] = $env:PT_solr_create_user
+}
+if ($env:PT_solr_user) {
+  $ExtraVars['solr_user'] = $env:PT_solr_user
 }
 if ($env:PT_solr_group) {
   $ExtraVars['solr_group'] = $env:PT_solr_group
@@ -111,14 +87,32 @@ if ($env:PT_solr_remove_cruft) {
 if ($env:PT_solr_service_manage) {
   $ExtraVars['solr_service_manage'] = $env:PT_solr_service_manage
 }
+if ($env:PT_solr_service_name) {
+  $ExtraVars['solr_service_name'] = $env:PT_solr_service_name
+}
 if ($env:PT_solr_service_state) {
   $ExtraVars['solr_service_state'] = $env:PT_solr_service_state
 }
 if ($env:PT_solr_install_dir) {
   $ExtraVars['solr_install_dir'] = $env:PT_solr_install_dir
 }
+if ($env:PT_solr_install_path) {
+  $ExtraVars['solr_install_path'] = $env:PT_solr_install_path
+}
+if ($env:PT_solr_home) {
+  $ExtraVars['solr_home'] = $env:PT_solr_home
+}
 if ($env:PT_solr_connect_host) {
   $ExtraVars['solr_connect_host'] = $env:PT_solr_connect_host
+}
+if ($env:PT_solr_port) {
+  $ExtraVars['solr_port'] = $env:PT_solr_port
+}
+if ($env:PT_solr_xms) {
+  $ExtraVars['solr_xms'] = $env:PT_solr_xms
+}
+if ($env:PT_solr_xmx) {
+  $ExtraVars['solr_xmx'] = $env:PT_solr_xmx
 }
 if ($env:PT_solr_timezone) {
   $ExtraVars['solr_timezone'] = $env:PT_solr_timezone

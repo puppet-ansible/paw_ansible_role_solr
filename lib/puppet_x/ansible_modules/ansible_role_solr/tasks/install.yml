@@ -14,9 +14,9 @@
       - chkconfig
     state: present
   when:
-    - ansible_service_mgr == 'systemd'
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_version.split(".")[0] >= '9'
+    - ansible_facts.service_mgr == 'systemd'
+    - ansible_facts.os_family == 'RedHat'
+    - ansible_facts.distribution_version.split(".")[0] >= '9'
 
 - name: Ensure service wrapper is installed for RHEL 7 & 8.
   package:
@@ -25,17 +25,17 @@
       - chkconfig
     state: present
   when:
-    - ansible_service_mgr == 'systemd'
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_version.split(".")[0] <= '8'
+    - ansible_facts.service_mgr == 'systemd'
+    - ansible_facts.os_family == 'RedHat'
+    - ansible_facts.distribution_version.split(".")[0] <= '8'
 
 - name: Ensure service wrapper is installed for Debian-based distributions.
   package:
     name: init-system-helpers
     state: present
   when:
-    - ansible_service_mgr == 'systemd'
-    - ansible_os_family == 'Debian'
+    - ansible_facts.service_mgr == 'systemd'
+    - ansible_facts.os_family == 'Debian'
 
 # We add '-n' to Solr versions beyond 6.3.0 to prevent autostart on install.
 - name: Run Solr installation script.
@@ -56,8 +56,8 @@
 - name: Ensure solr is stopped (RHEL 7+ workaround).
   command: service {{ solr_service_name }} stop
   when:
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_version.split(".")[0] >= '7'
+    - ansible_facts.os_family == 'RedHat'
+    - ansible_facts.distribution_version.split(".")[0] >= '7'
     - solr_install_script_result.changed
   failed_when: false
   tags: ['skip_ansible_lint']
@@ -67,7 +67,7 @@
     name: solr
     daemon_reload: true
   when:
-    - ansible_os_family == 'RedHat'
-    - ansible_distribution_version.split(".")[0] >= '7'
+    - ansible_facts.os_family == 'RedHat'
+    - ansible_facts.distribution_version.split(".")[0] >= '7'
     - solr_install_script_result.changed
   tags: ['skip_ansible_lint']

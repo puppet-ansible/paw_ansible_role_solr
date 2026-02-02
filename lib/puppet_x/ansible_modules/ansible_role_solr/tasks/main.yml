@@ -2,15 +2,9 @@
 - import_tasks: user.yml
   when: solr_create_user
 
-- name: Set solr_filename for Solr 4+.
+- name: Set solr_filename.
   set_fact:
     solr_filename: "solr-{{ solr_version }}"
-  when: "solr_version.split('.')[0] >= '4'"
-
-- name: Set solr_filename for Solr 3.x.
-  set_fact:
-    solr_filename: "apache-solr-{{ solr_version }}"
-  when: "solr_version.split('.')[0] == '3'"
 
 - name: Check if Solr has been installed already.
   stat:
@@ -43,11 +37,6 @@
   when: solr_download_status.changed
   tags: ['skip_ansible_lint']
 
-# Install Solr < 5.
-- include_tasks: install-pre5.yml
-  when: "solr_version.split('.')[0] < '5'"
-
-# Install Solr 5+.
 - include_tasks: install.yml
   when: "solr_version.split('.')[0] >= '5'"
 
@@ -64,6 +53,6 @@
 
 # Create cores, if any are configured.
 - include_tasks: cores.yml
-  when: "solr_cores and solr_version.split('.')[0] >= '5'"
+  when: "solr_cores is defined"
 
 - include_tasks: trim-fat.yml
