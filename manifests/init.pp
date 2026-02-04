@@ -76,50 +76,50 @@ class paw_ansible_role_solr (
 # Execute the Ansible role using PAR (Puppet Ansible Runner)
 # Playbook synced via pluginsync to agent's cache directory
 # Check for common paw::par_vardir setting, then module-specific, then default
-  $_par_vardir = $par_vardir ? {
-    undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
-    default => $par_vardir,
-  }
-  $playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_solr/playbook.yml"
+$_par_vardir = $par_vardir ? {
+  undef   => lookup('paw::par_vardir', Stdlib::Absolutepath, 'first', '/opt/puppetlabs/puppet/cache'),
+  default => $par_vardir,
+}
+$playbook_path = "${_par_vardir}/lib/puppet_x/ansible_modules/ansible_role_solr/playbook.yml"
 
-  par { 'paw_ansible_role_solr-main':
-    ensure        => present,
-    playbook      => $playbook_path,
-    playbook_vars => {
-      'solr_workspace'               => $solr_workspace,
-      'solr_create_user'             => $solr_create_user,
-      'solr_user'                    => $solr_user,
-      'solr_group'                   => $solr_group,
-      'solr_version'                 => $solr_version,
-      'solr_mirror'                  => $solr_mirror,
-      'solr_remove_cruft'            => $solr_remove_cruft,
-      'solr_service_manage'          => $solr_service_manage,
-      'solr_service_name'            => $solr_service_name,
-      'solr_service_state'           => $solr_service_state,
-      'solr_install_dir'             => $solr_install_dir,
-      'solr_install_path'            => $solr_install_path,
-      'solr_home'                    => $solr_home,
-      'solr_connect_host'            => $solr_connect_host,
-      'solr_port'                    => $solr_port,
-      'solr_xms'                     => $solr_xms,
-      'solr_xmx'                     => $solr_xmx,
-      'solr_timezone'                => $solr_timezone,
-      'solr_opts'                    => $solr_opts,
-      'solr_cores'                   => $solr_cores,
-      'solr_default_core_path'       => $solr_default_core_path,
-      'solr_config_file'             => $solr_config_file,
-      'solr_restart_handler_enabled' => $solr_restart_handler_enabled,
-    },
-    tags          => $par_tags,
-    skip_tags     => $par_skip_tags,
-    start_at_task => $par_start_at_task,
-    limit         => $par_limit,
-    verbose       => $par_verbose,
-    check_mode    => $par_check_mode,
-    timeout       => $par_timeout,
-    user          => $par_user,
-    env_vars      => $par_env_vars,
-    logoutput     => $par_logoutput,
-    exclusive     => $par_exclusive,
-  }
+par { 'paw_ansible_role_solr-main':
+  ensure        => present,
+  playbook      => $playbook_path,
+  playbook_vars => {
+        'solr_workspace' => $solr_workspace,
+        'solr_create_user' => $solr_create_user,
+        'solr_user' => $solr_user,
+        'solr_group' => $solr_group,
+        'solr_version' => $solr_version,
+        'solr_mirror' => $solr_mirror,
+        'solr_remove_cruft' => $solr_remove_cruft,
+        'solr_service_manage' => $solr_service_manage,
+        'solr_service_name' => $solr_service_name,
+        'solr_service_state' => $solr_service_state,
+        'solr_install_dir' => $solr_install_dir,
+        'solr_install_path' => $solr_install_path,
+        'solr_home' => $solr_home,
+        'solr_connect_host' => $solr_connect_host,
+        'solr_port' => $solr_port,
+        'solr_xms' => $solr_xms,
+        'solr_xmx' => $solr_xmx,
+        'solr_timezone' => $solr_timezone,
+        'solr_opts' => $solr_opts,
+        'solr_cores' => $solr_cores,
+        'solr_default_core_path' => $solr_default_core_path,
+        'solr_config_file' => $solr_config_file,
+        'solr_restart_handler_enabled' => $solr_restart_handler_enabled
+              },
+  tags          => $par_tags,
+  skip_tags     => $par_skip_tags,
+  start_at_task => $par_start_at_task,
+  limit         => $par_limit,
+  verbose       => $par_verbose,
+  check_mode    => $par_check_mode,
+  timeout       => $par_timeout,
+  user          => $par_user,
+  env_vars      => $par_env_vars,
+  logoutput     => $par_logoutput,
+  exclusive     => $par_exclusive,
+}
 }
